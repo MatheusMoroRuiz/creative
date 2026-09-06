@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+/* Paleta da identidade da Creative: vinho + branco.
+   O vinho é a cor de marca (fundo do logotipo); o papel é o neutro claro
+   das seções de leitura; ink/charcoal são escuros com fundo avermelhado,
+   para que o preto pertença à mesma família da marca. */
+@theme {
+  --color-wine: #6e1015;
+  --color-wine-deep: #4a0a0e;
+  --color-wine-bright: #a8232b;
+  --color-paper: #f7f4f1;
+  --color-bone: #e7ded7;
+  --color-charcoal: #241416;
+  --color-ink: #140809;
+  --color-white: #ffffff;
+}
+
+:root {
+  --ease-cinema: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@theme inline {
+  --font-display: var(--font-anton);
+  --font-voice: var(--font-fraunces);
+  --font-sans: var(--font-archivo);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-paper);
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-wine);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-wine);
+  outline-offset: 3px;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+/* ---------- Layout ---------- */
+
+.container-edit {
+  width: 100%;
+  max-width: 1680px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.font-voice {
+  font-family: var(--font-voice);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.section-pad {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+/* Oversized background wordmark — fills empty space with intention
+   instead of decoration; always paired with real foreground content. */
+.ghost-type {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  color: currentColor;
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 0.8;
+}
+
+/* ---------- Editorial numbering / labels ---------- */
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.hairline {
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  opacity: 0.18;
+}
+
+/* ---------- Signature motif: iris reveal ---------- */
+/* Referência ao círculo do símbolo da marca: imagens e vídeos entram
+   através de uma abertura circular, como um diafragma de lente. */
+
+.iris {
+  clip-path: circle(6% at 50% 50%);
+  transform: scale(1.12);
+  transition: clip-path 1.4s var(--ease-cinema), transform 1.6s var(--ease-cinema);
+  will-change: clip-path, transform;
+}
+
+.iris.is-in {
+  clip-path: circle(85% at 50% 50%);
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iris {
+    transition: opacity 0.5s ease;
+    clip-path: none;
+    transform: none;
+    opacity: 0;
+  }
+  .iris.is-in {
+    opacity: 1;
+  }
+}
+
+/* ---------- Generic reveal (lines, blocks) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 0.9s var(--ease-cinema), transform 0.9s var(--ease-cinema);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+}
+
+/* ---------- Film grain overlay (extremely subtle) ---------- */
+
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* ---------- Placeholder media (duotone + grain + ghost numeral) ----------
+   Stands in for real footage without reading as an empty template:
+   a moving duotone field, fine grain, and an oversized ghost numeral. */
+
+.frame-duotone {
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(155deg, var(--color-wine-deep) 0%, var(--color-charcoal) 62%, var(--color-ink) 100%);
+  overflow: hidden;
+}
+
+.frame-duotone::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  z-index: 0;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  animation: grain-drift 9s steps(6) infinite;
+}
+
+.frame-duotone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(120% 90% at 15% 0%, rgba(168, 35, 43, 0.42), transparent 55%);
+}
+
+@keyframes grain-drift {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-8%, 6%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame-duotone::before {
+    animation: none;
+  }
+}
+
+/* ---------- Scrollbar (subtle, brand-tinted) ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-wine);
+  border: 2px solid var(--color-paper);
+  border-radius: 0;
+}
+
+/* ---------- Underline link (editorial, not a button) ---------- */
+
+.link-edit {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.link-edit .link-edit__line {
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform-origin: left;
+  transform: scaleX(0.35);
+  transition: transform 0.5s var(--ease-cinema);
+}
+
+.link-edit:hover .link-edit__line,
+.link-edit:focus-visible .link-edit__line {
+  transform: scaleX(1);
+}
