@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Archivo, Fraunces } from "next/font/google";
+import { Anton, Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -12,17 +12,13 @@ const anton = Anton({
   display: "swap",
 });
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+// Poppins cobre todo o texto fora dos títulos grandes: subtítulos,
+// corpo, rótulos e formulários.
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  style: ["italic"],
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -63,7 +59,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="pt-BR"
-      className={`${anton.variable} ${archivo.variable} ${fraunces.variable}`}
+      // Avisa o Next que a rolagem suave é intencional, para ele não
+      // atrapalhar a troca de páginas.
+      data-scroll-behavior="smooth"
+      className={`${anton.variable} ${poppins.variable}`}
     >
       <body className="flex min-h-svh flex-col bg-paper text-charcoal">
         <a

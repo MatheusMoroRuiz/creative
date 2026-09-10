@@ -8,15 +8,17 @@ export function CTASection() {
         aria-hidden
         className="ghost-type pointer-events-none absolute -right-[4vw] -top-[8vw] text-[22vw] text-ink"
       >
-        Filme
+        Clientes
       </span>
 
       <div className="container-edit relative">
         <Reveal>
-          <h2 className="font-display text-[13vw] leading-[0.86] sm:text-[7vw] lg:text-[5.5rem]">
-            Qual é o
+          <h2 className="font-display text-[11vw] leading-[0.88] sm:text-[6vw] lg:text-[4.75rem]">
+            Você confia na Creative
             <br />
-            próximo filme?
+            para conquistar
+            <br />
+            seus clientes?
           </h2>
         </Reveal>
 

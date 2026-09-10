@@ -10,23 +10,23 @@ export function ProcessSection() {
           number="Processo"
           title={
             <>
-              Um bom comercial
+              Um bom conteúdo
               <br />
-              começa antes do REC.
+              começa com
             </>
           }
         />
 
-        <div className="flex flex-col sm:flex-row sm:items-stretch">
+        <div className="flex flex-col sm:flex-row sm:items-stretch sm:gap-6 lg:gap-10">
           {processSteps.map((step, i) => (
             <Reveal
               key={step}
               delay={i * 80}
               className="flex flex-1 items-center gap-4 py-6 sm:flex-col sm:items-start sm:gap-0 sm:py-0"
             >
-              <div className="flex w-full items-center gap-4 sm:flex-col sm:items-start sm:gap-6">
+              <div className="flex w-full items-center gap-4 sm:flex-col sm:items-start sm:gap-5">
                 <span className="eyebrow text-charcoal/50">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-display text-3xl leading-none sm:text-4xl lg:text-5xl">
+                <span className="font-display text-3xl leading-[0.95] sm:text-[2rem] lg:text-[2.5rem]">
                   {step}
                 </span>
               </div>

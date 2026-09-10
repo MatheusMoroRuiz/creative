@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
-  title: "Sobre",
+  title: "O que a Creative faz",
   description: "Conheça o propósito da Creative, produtora de filmes publicitários.",
 };
 
@@ -10,7 +10,7 @@ export default function SobrePage() {
   return (
     <div className="container-edit pb-20 pt-28 sm:pt-36">
       <Reveal>
-        <span className="eyebrow text-charcoal/50">Sobre</span>
+        <span className="eyebrow text-charcoal/50">O que a Creative faz?</span>
         <p className="font-voice mt-4 max-w-2xl text-[7vw] leading-[1.15] text-charcoal sm:text-[2.75rem]">
           Publicidade é atenção. Cinema é emoção. A Creative trabalha no
           encontro dos dois.

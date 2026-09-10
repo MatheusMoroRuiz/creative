@@ -8,9 +8,9 @@ import { Logo } from "@/components/Logo";
 import { MobileMenu } from "@/components/MobileMenu";
 
 const NAV_ITEMS = [
-  { href: "/trabalhos", label: "Trabalhos" },
+  { href: "/trabalhos", label: "Produções" },
   { href: "/#servicos", label: "Serviços" },
-  { href: "/sobre", label: "Sobre" },
+  { href: "/sobre", label: "O que a Creative faz?" },
   { href: "/contato", label: "Contato" },
 ] as const;
 
@@ -60,7 +60,10 @@ export function Header() {
             <Logo className="text-xl sm:text-2xl" />
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+          <nav
+            className="hidden items-center gap-5 md:flex lg:gap-8"
+            aria-label="Navegação principal"
+          >
             {NAV_ITEMS.map((item) => (
               <Link key={item.href} href={item.href} className="link-edit eyebrow">
                 {item.label}

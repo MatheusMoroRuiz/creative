@@ -1,4 +1,5 @@
 import { HeroShowreel } from "@/components/HeroShowreel";
+import { SpecialtiesBar } from "@/components/SpecialtiesBar";
 import { Manifesto } from "@/components/Manifesto";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ServicesIndex } from "@/components/ServicesIndex";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <HeroShowreel />
+      <SpecialtiesBar />
       <Manifesto />
       <ProjectsSection />
       <ServicesIndex />

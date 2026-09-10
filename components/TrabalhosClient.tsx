@@ -17,7 +17,7 @@ export function TrabalhosClient() {
   return (
     <div className="container-edit pb-20 pt-28 sm:pt-36">
       <Reveal>
-        <span className="eyebrow text-charcoal/50">Trabalhos</span>
+        <span className="eyebrow text-charcoal/50">Produções</span>
         <h1 className="font-display mt-3 text-[10vw] leading-[0.9] sm:text-[5vw] lg:text-[3.75rem]">
           Filmes que fazem
           <br />a marca ser vista.

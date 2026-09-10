@@ -22,8 +22,8 @@
 
 @theme inline {
   --font-display: var(--font-anton);
-  --font-voice: var(--font-fraunces);
-  --font-sans: var(--font-archivo);
+  --font-voice: var(--font-poppins);
+  --font-sans: var(--font-poppins);
 }
 
 * {
@@ -219,6 +219,31 @@ button {
 
 @media (prefers-reduced-motion: reduce) {
   .frame-duotone::before {
+    animation: none;
+  }
+}
+
+/* ---------- Avanço do papel na máquina de escrever ----------
+   A folha nova entra com altura zero e cresce, empurrando as anteriores
+   para cima — o mesmo movimento de um rolo alimentando papel contínuo. */
+
+.folha-avanco {
+  display: grid;
+  grid-template-rows: 1fr;
+  animation: folha-avanco 640ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes folha-avanco {
+  from {
+    grid-template-rows: 0fr;
+  }
+  to {
+    grid-template-rows: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folha-avanco {
     animation: none;
   }
 }

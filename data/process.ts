@@ -1,11 +1,11 @@
 /**
- * Sequência ilustrativa de processo. Ainda não validada pela Creative —
- * ajustar/confirmar antes de tratar como processo oficial divulgado.
+ * Etapas do processo da Creative, informadas pela própria empresa
+ * em 10/09/2026.
  */
 export const processSteps = [
-  "Briefing",
-  "Conceito",
+  "Estudo",
+  "Storytelling",
   "Roteiro",
   "Produção",
-  "Filme",
+  "Resultado",
 ];

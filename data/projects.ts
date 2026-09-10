@@ -23,6 +23,12 @@ export type Project = {
   video: string | null;
   /** Poster do vídeo. `null` = usa PlaceholderFrame como poster. */
   poster: string | null;
+  /**
+   * Trecho curto e leve (4s, 4:3, sem áudio) usado na cena da máquina de
+   * escrever. Gerado a partir do filme com ffmpeg. `null` = a cena mostra
+   * o poster parado.
+   */
+  preview: string | null;
   /** Aparece na seleção da home. */
   featured: boolean;
 };
@@ -40,8 +46,10 @@ export const categoryNavLabel: Record<ProjectCategory, string> = {
 };
 
 /**
- * Projetos reais, enviados pela Creative em 06/09/2026 (pasta
- * VideosProjetos). Título e cliente só foram preenchidos quando
+ * Projetos reais, enviados pela Creative (pasta VideosProjetos). Os
+ * masters em MOV/HEVC de 10/09/2026 foram convertidos para MP4/H.264
+ * 1080p com faststart — MOV não toca na maioria dos navegadores.
+ * Título e cliente só foram preenchidos quando
  * identificados com certeza dentro do próprio vídeo (logo/placa/letreiro
  * visível em cena) — nunca por suposição. `year` fica `null`: os arquivos
  * não trazem data de produção confirmada.
@@ -65,6 +73,7 @@ export const projects: Project[] = [
     thumbnail: "/images/projects/snowmell.webp",
     video: "/video/snowmell.mp4",
     poster: "/images/projects/snowmell.webp",
+    preview: "/video/previews/snowmell.mp4",
     featured: true,
   },
   {
@@ -73,13 +82,14 @@ export const projects: Project[] = [
     category: "realista",
     orientation: "vertical",
     year: null,
-    duration: "00:42",
+    duration: "00:43",
     client: "Duque Padaria & Confeitaria",
     description:
       "Filme publicitário vertical com transição criativa em formato de fechadura, revelando a experiência da padaria.",
     thumbnail: "/images/projects/duque-padaria.webp",
     video: "/video/duque-padaria.mp4",
     poster: "/images/projects/duque-padaria.webp",
+    preview: "/video/previews/duque-padaria-confeitaria.mp4",
     featured: true,
   },
   {
@@ -88,13 +98,14 @@ export const projects: Project[] = [
     category: "realista",
     orientation: "vertical",
     year: null,
-    duration: "00:34",
+    duration: "00:33",
     client: "James Joyce Irish Pub",
     description:
       "Filme publicitário vertical para redes sociais, apresentando a fachada e a atmosfera do ponto.",
     thumbnail: "/images/projects/james-joyce-pub.webp",
     video: "/video/james-joyce-pub.mp4",
     poster: "/images/projects/james-joyce-pub.webp",
+    preview: "/video/previews/james-joyce-irish-pub.mp4",
     featured: true,
   },
   {
@@ -103,14 +114,52 @@ export const projects: Project[] = [
     category: "realista",
     orientation: "horizontal",
     year: null,
-    duration: "00:21",
+    duration: "00:52",
     client: null,
     description:
-      "Cobertura em vídeo de uma experiência gastronômica temática, com personagem mascote e clientes reais.",
+      "Filme de uma experiência gastronômica temática, com personagem mascote, bastidores de estúdio e clientes reais.",
     thumbnail: "/images/projects/safari-restaurante.webp",
     video: "/video/safari-restaurante.mp4",
     poster: "/images/projects/safari-restaurante.webp",
+    preview: "/video/previews/experiencia-tematica-safari.mp4",
     featured: true,
+  },
+  {
+    slug: "mineirin-pao-de-queijo",
+    title: "Mineirin Pão de Queijo",
+    category: "realista",
+    orientation: "vertical",
+    year: null,
+    duration: "01:50",
+    // Assinatura "mineirin — pão de queijo" e endereço em Bauru/SP aparecem
+    // na cartela de encerramento do próprio filme.
+    client: "Mineirin Pão de Queijo",
+    description:
+      "Documentário de marca sobre os 28 anos da casa em Bauru, com depoimento e acervo histórico.",
+    thumbnail: "/images/projects/mineirin-pao-de-queijo.webp",
+    video: "/video/mineirin-pao-de-queijo.mp4",
+    poster: "/images/projects/mineirin-pao-de-queijo.webp",
+    preview: "/video/previews/mineirin-pao-de-queijo.mp4",
+    featured: true,
+  },
+  {
+    // ATENÇÃO: aparece uma marca de terceiro em cena. `client` fica `null`
+    // até que a Creative confirme se houve contratação — não atribuir a
+    // marca visível como cliente por conta própria.
+    slug: "tudo-que-e-inesquecivel",
+    title: "Tudo Que É Inesquecível",
+    category: "realista",
+    orientation: "horizontal",
+    year: null,
+    duration: "00:19",
+    client: null,
+    description:
+      "Filme conceitual com caracterização e direção de arte, construído em torno de uma única ideia e fechado com assinatura.",
+    thumbnail: "/images/projects/inesquecivel.webp",
+    video: "/video/inesquecivel.mp4",
+    poster: "/images/projects/inesquecivel.webp",
+    preview: null,
+    featured: false,
   },
   {
     slug: "quebre-seus-espelhos",
@@ -125,6 +174,7 @@ export const projects: Project[] = [
     thumbnail: "/images/projects/quebre-seus-espelhos.webp",
     video: "/video/quebre-seus-espelhos.mp4",
     poster: "/images/projects/quebre-seus-espelhos.webp",
+    preview: null,
     featured: false,
   },
   {
@@ -140,6 +190,7 @@ export const projects: Project[] = [
     thumbnail: "/images/projects/duque-paes.webp",
     video: "/video/duque-paes.mp4",
     poster: "/images/projects/duque-paes.webp",
+    preview: null,
     featured: false,
   },
 ];
