@@ -13,7 +13,7 @@ export function CTASection() {
 
       <div className="container-edit relative">
         <Reveal>
-          <h2 className="font-display text-[11vw] leading-[0.88] sm:text-[6vw] lg:text-[4.75rem]">
+          <h2 className="font-display text-[11vw] leading-[1.02] sm:text-[6vw] lg:text-[4.75rem]">
             Você confia na Creative
             <br />
             para conquistar

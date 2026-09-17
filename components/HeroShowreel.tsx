@@ -14,7 +14,7 @@ export function HeroShowreel() {
       </span>
 
       <div className="container-edit relative z-10 pb-14 pt-32 sm:pb-16 sm:pt-40">
-        <h1 className="font-display text-[11vw] leading-[0.88] sm:text-[7vw] lg:text-[5.5rem]">
+        <h1 className="font-display text-[11vw] leading-[1.02] sm:text-[7vw] lg:text-[5.5rem]">
           A Creative faz seu projeto,
           <br />
           entende sua marca
